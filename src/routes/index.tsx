@@ -23,6 +23,7 @@
 import { RouteObject } from 'react-router-dom';
 import Home from './../pages/Home';
 import Login from './../pages/Login';
+import ProtectedRouter from '../components/ProtectedRouter';
 
 const routes: RouteObject[] = [
   {
@@ -31,7 +32,11 @@ const routes: RouteObject[] = [
   },
   {
     path: '/home',
-    element: <Home />
+    element: (
+      <ProtectedRouter>
+        <Home />
+      </ProtectedRouter>
+    )
   }
 ];
 

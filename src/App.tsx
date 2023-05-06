@@ -34,9 +34,16 @@
 
 import { useRoutes } from 'react-router-dom';
 import routes from './routes';
+import UserContextProvider from './context/UserContext';
 
 function App() {
-  return useRoutes(routes);
+  const elements = useRoutes(routes);
+  
+  return (
+    <UserContextProvider>
+      {elements}
+    </UserContextProvider>
+  );
 }
 
 export default App;
