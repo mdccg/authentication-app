@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const LoginContainer = styled.div`
   padding: 50px 0;
   box-sizing: border-box;
-  background-color: #e0e0e0;
+  background-color: #f5f6fa;
   min-height: 100vh;
   justify-content: center;
   align-items: center;

@@ -41,10 +41,48 @@
 // ⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀
 // ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣟⠀⠀⠀⠀⠀⠀⠀⠀⠀
 
-import { LoginButton, LoginContainer, ProviderLogo, SignInText, SignInTextHitbox } from './styles';
+import { FacebookAuthProvider, OAuthCredential, getAuth } from 'firebase/auth';
+import { useContext, useEffect, useState } from 'react';
+import { useSignInWithFacebook } from 'react-firebase-hooks/auth';
+import { useNavigate } from 'react-router-dom';
+import { firebaseApp } from '../../config/firebase';
 import FacebookLogo from './../../assets/images/facebook.png';
+import { UserContext } from './../../context/UserContext';
+import { LoginButton, LoginContainer, ProviderLogo, SignInText, SignInTextHitbox } from './styles';
 
 const Login = () => {
+  const navigate = useNavigate();
+  const { setProfilePicture, setToken, setUserName, token } = useContext(UserContext);
+
+  useEffect(() => {
+    // FIXME extremamente carente de refatoração
+    if (token) {
+      navigate('');
+    }
+  });
+
+  const [tokenProvided, setTokenProvided] = useState<boolean>(false);
+
+  const auth = getAuth(firebaseApp);
+  auth.languageCode = 'pt-br';
+
+  const [
+    signInWithFacebook,
+    facebookUserCredentials,
+    facebookIsLoading,
+    facebookError
+  ] = useSignInWithFacebook(auth);
+
+  if (facebookUserCredentials) {
+    const credentials = FacebookAuthProvider.credentialFromResult(facebookUserCredentials) as OAuthCredential;
+    
+    if (!credentials.accessToken) {
+      throw new Error('Error at Login/index.ts(79:5): Facebook token not provided.');
+    }
+    
+    const token = credentials.accessToken;
+    
+  }
 
   return (
     <LoginContainer>
