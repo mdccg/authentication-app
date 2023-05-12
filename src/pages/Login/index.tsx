@@ -61,7 +61,7 @@ const Login = () => {
     }
   });
 
-  const [tokenProvided, setTokenProvided] = useState<boolean>(false);
+  const [tokenProvided, setTokenProvided] = useState<boolean>(true);
 
   const auth = getAuth(firebaseApp);
   auth.languageCode = 'pt-br';
@@ -81,12 +81,32 @@ const Login = () => {
     }
     
     const token = credentials.accessToken;
+    const { user } = facebookUserCredentials;
+    const { photoURL: profilePicture, displayName: userName } = user;
     
+    if (token) {
+      setToken(token);
+      setUserName(userName as string);
+      setProfilePicture(profilePicture as string);
+      navigate('/home');
+      
+    } else {
+      setTokenProvided(false);
+      
+    }
+  }
+  
+  if (facebookError) {
+    console.error(facebookError);
+  }
+
+  const handleLoginButtonClick = () => {
+    signInWithFacebook();
   }
 
   return (
     <LoginContainer>
-      <LoginButton>
+      <LoginButton onClick={handleLoginButtonClick}>
         <ProviderLogo src={FacebookLogo} alt="Logotipo do Facebook" />
         <SignInTextHitbox>
           <SignInText>

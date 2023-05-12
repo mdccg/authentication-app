@@ -44,7 +44,10 @@ export const LoginButton = styled.button`
   &:active {
     opacity: 1;
   }
-;
+
+  @media only screen and (max-width: 768px) {
+    width: 90%;
+  }
 `;
 
 export const ProviderLogo = styled.img`
