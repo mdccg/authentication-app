@@ -17,6 +17,9 @@ Este app é uma demonstração de como implementar o processo de autenticação 
 
 Este foi o sexto repositório de código apresentado no [Curso Superior de TSI do IFMS](https://www.ifms.edu.br/campi/campus-aquidauana/cursos/graduacao/sistemas-para-internet/sistemas-para-internet) como requisito para obtenção da nota parcial das atividades da unidade curricular Construção de Páginas Web IV.
 
+| [&larr; Repositório anterior](https://github.com/mdccg/anime-snap) | [Próximo repositório &rarr;](#) |
+|-|-|
+
 ## Pilha de tecnologia
 
 | Papel | Tecnologia |
