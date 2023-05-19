@@ -6,4 +6,4 @@
 
 ## Ícones
 
-- [Fb, facebook, facebook logo icon - Free download](https://www.iconfinder.com/icons/5296499/fb_facebook_facebook_logo_icon)
+- [Social, github icon - Free download on Iconfinder](https://www.iconfinder.com/icons/211904/social_github_icon)

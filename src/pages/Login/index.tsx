@@ -41,14 +41,14 @@
 // ⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀
 // ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣟⠀⠀⠀⠀⠀⠀⠀⠀⠀
 
-import { FacebookAuthProvider, OAuthCredential, getAuth } from 'firebase/auth';
+import { GithubAuthProvider, OAuthCredential, getAuth } from 'firebase/auth';
 import { useContext, useEffect, useState } from 'react';
-import { useSignInWithFacebook } from 'react-firebase-hooks/auth';
+import { useSignInWithGithub } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import { firebaseApp } from '../../config/firebase';
-import FacebookLogo from './../../assets/images/facebook.png';
+import GithubLogo from './../../assets/images/github.png';
 import { UserContext } from './../../context/UserContext';
-import { LoginButton, LoginContainer, ProviderLogo, SignInText, SignInTextHitbox } from './styles';
+import { ErrorMessage, InfoMessage, LoginButton, LoginContainer, ProviderLogo, SignInText, SignInTextHitbox } from './styles';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -67,21 +67,21 @@ const Login = () => {
   auth.languageCode = 'pt-br';
 
   const [
-    signInWithFacebook,
-    facebookUserCredentials,
-    facebookIsLoading,
-    facebookError
-  ] = useSignInWithFacebook(auth);
+    signInWithGithub,
+    githubUserCredentials,
+    githubIsLoading,
+    githubError
+  ] = useSignInWithGithub(auth);
 
-  if (facebookUserCredentials) {
-    const credentials = FacebookAuthProvider.credentialFromResult(facebookUserCredentials) as OAuthCredential;
+  if (githubUserCredentials) {
+    const credentials = GithubAuthProvider.credentialFromResult(githubUserCredentials) as OAuthCredential;
     
     if (!credentials.accessToken) {
-      throw new Error('Error at Login/index.ts(79:5): Facebook token not provided.');
+      throw new Error('Error at Login/index.ts(79:5): Github token not provided.');
     }
     
     const token = credentials.accessToken;
-    const { user } = facebookUserCredentials;
+    const { user } = githubUserCredentials;
     const { photoURL: profilePicture, displayName: userName } = user;
     
     if (token) {
@@ -96,26 +96,31 @@ const Login = () => {
     }
   }
   
-  if (facebookError) {
-    console.error(facebookError);
+  if (githubError) {
+    console.error(githubError);
   }
 
   const handleLoginButtonClick = () => {
-    signInWithFacebook();
+    signInWithGithub();
   }
 
   return (
-    <LoginContainer>
-      <LoginButton onClick={handleLoginButtonClick}>
-        <ProviderLogo src={FacebookLogo} alt="Logotipo do Facebook" />
-        <SignInTextHitbox>
-          <SignInText>
-            Entre com o Facebook<br />
-            <s>e nos forneça todos os seus dados</s>
-          </SignInText>
-        </SignInTextHitbox>
-      </LoginButton>
-    </LoginContainer>
+    <>
+      <LoginContainer>
+        <LoginButton onClick={handleLoginButtonClick}>
+          <ProviderLogo src={GithubLogo} alt="Logotipo do Github" />
+          <SignInTextHitbox>
+            <SignInText>
+              Entre com o Github<br />
+              <s>e nos forneça todos os seus dados</s>
+            </SignInText>
+          </SignInTextHitbox>
+        </LoginButton>
+      </LoginContainer>
+
+      {githubIsLoading && <InfoMessage>Autenticando&hellip;</InfoMessage>}
+      {githubError && <ErrorMessage>Erro ao tentar autenticar</ErrorMessage>}
+    </>
   );
 }
 

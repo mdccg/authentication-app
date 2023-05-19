@@ -69,3 +69,23 @@ export const SignInText = styled.span`
   letter-spacing: 1.5px;
   text-transform: uppercase;
 `;
+
+export const InfoMessage = styled.h2`
+  font-family: 'Lato';
+  font-weight: 900;
+  background-color: #4d05e8;
+  color: white;
+  width: 400px;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 30px auto;
+  text-align: center;
+  
+  position: absolute;
+  top: 0;
+  left: calc(50% - 200px);
+`;
+
+export const ErrorMessage = styled(InfoMessage)`
+  background-color: #cf000f;
+`;
