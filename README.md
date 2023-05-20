@@ -11,6 +11,14 @@
     - [Passo a passo](#passo-a-passo)
     - [Criando seu próprio app Firebase](#criando-seu-próprio-app-firebase)
 
+## _To-do list_
+
+- Corrigir o seguinte erro:
+
+> Warning: Cannot update a component (`UserContextProvider`) while rendering a different component (`Login`). To locate the bad setState() call inside `Login`, follow the stack trace as described in
+
+- Mudar "Facebook" para "GitHub"
+
 ## Motivação
 
 Este app é uma demonstração de como implementar o processo de autenticação dentro de um aplicativo utilizando a plataforma do Facebook. Ele é protegido por autenticação via Facebook e serve como exemplo para os desenvolvedores que desejam adicionar autenticação em seus próprios aplicativos. Embora a escolha do Facebook seja comum, outras plataformas podem ser utilizadas, dependendo das necessidades do projeto. O objetivo desta demo é fornecer aos desenvolvedores uma base sólida para iniciar a implementação de autenticação utilizando tecnologias modernas e populares.

@@ -28,15 +28,32 @@
 // ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠚⠀⠀⠈⠓⠤⣀⡀⠀⠀⠀⠀⠀⢀⣠⠔⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 // ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠈⠉⠉⠉⠉⠉⡁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 
+import { useContext } from 'react';
 import Header from './../../components/Header';
+import { UserContext } from './../../context/UserContext';
+import { Container, WelcomeMessage } from './styles';
 
 const Home = () => {
-
+  const { userName } = useContext(UserContext);
+  
   return (
-    <main>
+    <>
       <Header />
-    </main>
+      <Container>
+        <WelcomeMessage>
+          Olá, {userName}, seja muito bem-vindo(a) à página GitHuberson!
+        </WelcomeMessage>
+        <WelcomeMessage>
+          É um prazer tê-lo(a) aqui conosco. Espero que você encontre o que procura e tenha
+          uma excelente experiência em nosso site. Caso precise de ajuda para
+          navegar pelas páginas ou tenha alguma dúvida específica, não hesite em
+          entrar em contato comigo. Estou sempre à disposição para ajudá-lo(a) da
+          melhor maneira possível. Novamente, seja muito bem-vindo(a) à
+          GitHuberson!
+        </WelcomeMessage>
+      </Container>
+    </>
   );
-}
+};
 
 export default Home;

@@ -57,11 +57,9 @@ const Login = () => {
   useEffect(() => {
     // FIXME extremamente carente de refatoração
     if (token) {
-      navigate('');
+      navigate('/home');
     }
   });
-
-  const [tokenProvided, setTokenProvided] = useState<boolean>(true);
 
   const auth = getAuth(firebaseApp);
   auth.languageCode = 'pt-br';
@@ -76,10 +74,6 @@ const Login = () => {
   if (githubUserCredentials) {
     const credentials = GithubAuthProvider.credentialFromResult(githubUserCredentials) as OAuthCredential;
     
-    if (!credentials.accessToken) {
-      throw new Error('Error at Login/index.ts(79:5): Github token not provided.');
-    }
-    
     const token = credentials.accessToken;
     const { user } = githubUserCredentials;
     const { photoURL: profilePicture, displayName: userName } = user;
@@ -88,11 +82,8 @@ const Login = () => {
       setToken(token);
       setUserName(userName as string);
       setProfilePicture(profilePicture as string);
+    
       navigate('/home');
-      
-    } else {
-      setTokenProvided(false);
-      
     }
   }
   

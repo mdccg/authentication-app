@@ -30,7 +30,8 @@ const Header = () => {
       
       <ProfilePicture
         src={profilePicture}
-        alt={`Foto de ${userName}`} />
+        alt={`Foto de ${userName}`}
+        referrerPolicy="no-referrer" />
 
       <ProfileName>{userName}</ProfileName>
 
