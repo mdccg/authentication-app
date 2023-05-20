@@ -1,9 +1,10 @@
 import styled from 'styled-components';
+import { onMouseOver } from './../../styles/animations';
 
 export const LoginContainer = styled.div`
   padding: 50px 0;
   box-sizing: border-box;
-  background-color: #f5f6fa;
+  background-color: var(--city-lights);
   min-height: 100vh;
   justify-content: center;
   align-items: center;
@@ -12,10 +13,9 @@ export const LoginContainer = styled.div`
 
 export const LoginButton = styled.button`
   border: none;
-  border-radius: 50px;
   display: block;
   margin: auto;
-  border-radius: 20px;
+  border-radius: 8px;
   /* https://shadows.brumm.af/ */
   box-shadow:
     2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
@@ -24,8 +24,7 @@ export const LoginButton = styled.button`
     22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
     41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
     100px 100px 80px rgba(0, 0, 0, 0.07);
-  background-color: var(--blue);
-  
+  background-color: var(--lynx-white);
   flex-direction: row;
   align-items: center;
   display: flex;
@@ -34,16 +33,9 @@ export const LoginButton = styled.button`
 
   cursor: pointer;
   transition: all .125s;
-  opacity: .9;
   user-select: none;
   
-  &:hover {
-    opacity: .8;
-  }
-
-  &:active {
-    opacity: 1;
-  }
+  ${onMouseOver};
 
   @media only screen and (max-width: 768px) {
     width: 90%;
@@ -62,7 +54,7 @@ export const SignInTextHitbox = styled.div`
 
 export const SignInText = styled.span`
   font-family: 'Lato';
-  color: white;
+  color: black;
   font-size: 125%;
   line-height: 1.5;
   font-weight: 900;
@@ -73,7 +65,7 @@ export const SignInText = styled.span`
 export const InfoMessage = styled.h2`
   font-family: 'Lato';
   font-weight: 900;
-  background-color: #4d05e8;
+  background-color: var(--electron-blue);
   color: white;
   width: 400px;
   padding: 10px;
@@ -87,5 +79,5 @@ export const InfoMessage = styled.h2`
 `;
 
 export const ErrorMessage = styled(InfoMessage)`
-  background-color: #cf000f;
+  background-color: var(--professor-s-red);
 `;

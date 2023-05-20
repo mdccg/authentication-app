@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 
 export const HeaderContainer = styled.div`
   display: flex;
@@ -34,5 +36,8 @@ export const SignOutButton = styled.button`
   background: none;
 
   padding: 10px;
-  background-color: #323278;
+  border-radius: 4px;
+  background-color: var(--orange);
+
+  margin-left: 16px;
 `;
