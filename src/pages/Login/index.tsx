@@ -45,7 +45,7 @@ import { GithubAuthProvider, OAuthCredential, getAuth } from 'firebase/auth';
 import { useContext, useEffect, useState } from 'react';
 import { useSignInWithGithub } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
-import { firebaseApp } from '../../config/firebase';
+import { firebaseApp } from './../../config/firebase';
 import GithubLogo from './../../assets/images/github.png';
 import { UserContext } from './../../context/UserContext';
 import { ErrorMessage, InfoMessage, LoginButton, LoginContainer, ProviderLogo, SignInText, SignInTextHitbox } from './styles';

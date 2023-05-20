@@ -23,7 +23,7 @@
 import { RouteObject } from 'react-router-dom';
 import Home from './../pages/Home';
 import Login from './../pages/Login';
-import ProtectedRouter from '../components/ProtectedRouter';
+import ProtectedRouter from './../components/ProtectedRouter';
 
 const routes: RouteObject[] = [
   {
