@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useState } from 'react';
+import { ReactNode, createContext, useEffect, useState } from 'react';
 
 type UserContextType = {
   token: string;
@@ -10,9 +10,9 @@ type UserContextType = {
 }
 
 const initialValue: UserContextType = {
-  token: '',
-  userName: '',
-  profilePicture: '',
+  token: localStorage.getItem('token') || '',
+  userName: localStorage.getItem('userName') || '',
+  profilePicture: localStorage.getItem('profilePicture') || '',
   setToken: () => {},
   setUserName: () => {},
   setProfilePicture: () => {}
@@ -29,6 +29,12 @@ const UserContextProvider = ({ children }: UserContextProviderProps) => {
   const [userName, setUserName] = useState<string>(initialValue.userName);
   const [profilePicture, setProfilePicture] = useState<string>(initialValue.profilePicture);
   
+  useEffect(() => {
+    localStorage.setItem('token', token);
+    localStorage.setItem('userName', userName);
+    localStorage.setItem('profilePicture', profilePicture);
+  }, [token, userName, profilePicture]);
+
   return (
     <UserContext.Provider value={{ token, userName, profilePicture, setToken, setUserName, setProfilePicture }}>
       {children}
