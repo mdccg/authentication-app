@@ -1,8 +1,8 @@
-# facebook-authentication-demo
+# github-authentication-demo
 
 ## Sumário
 
-- [facebook-authentication-demo](#facebook-authentication-demo)
+- [github-authentication-demo](#github-authentication-demo)
   - [Sumário](#sumário)
   - [Motivação](#motivação)
   - [Pilha de tecnologia](#pilha-de-tecnologia)
@@ -17,15 +17,13 @@
 
 > Warning: Cannot update a component (`UserContextProvider`) while rendering a different component (`Login`). To locate the bad setState() call inside `Login`, follow the stack trace as described in
 
-- Mudar "Facebook" para "GitHub"
-
 ## Motivação
 
-Este app é uma demonstração de como implementar o processo de autenticação dentro de um aplicativo utilizando a plataforma do Facebook. Ele é protegido por autenticação via Facebook e serve como exemplo para os desenvolvedores que desejam adicionar autenticação em seus próprios aplicativos. Embora a escolha do Facebook seja comum, outras plataformas podem ser utilizadas, dependendo das necessidades do projeto. O objetivo desta demo é fornecer aos desenvolvedores uma base sólida para iniciar a implementação de autenticação utilizando tecnologias modernas e populares.
+Este app é uma demonstração de como implementar o processo de autenticação dentro de um aplicativo utilizando a plataforma do GitHub. Ele é protegido por autenticação via GitHub e serve como exemplo para os desenvolvedores que desejam adicionar autenticação em seus próprios aplicativos. Embora a escolha do GitHub seja comum, outras plataformas podem ser utilizadas, dependendo das necessidades do projeto. O objetivo desta demo é fornecer aos desenvolvedores uma base sólida para iniciar a implementação de autenticação utilizando tecnologias modernas e populares.
 
 Este foi o sexto repositório de código apresentado no [Curso Superior de TSI do IFMS](https://www.ifms.edu.br/campi/campus-aquidauana/cursos/graduacao/sistemas-para-internet/sistemas-para-internet) como requisito para obtenção da nota parcial das atividades da unidade curricular Construção de Páginas Web IV.
 
-| [&larr; Repositório anterior](https://github.com/mdccg/anime-snap) | [Próximo repositório &rarr;](#) |
+| [&larr; Repositório anterior](https://github.com/mdccg/anime-snap) | [Próximo repositório &rarr;](https://github.com/mdccg/exemplo-ci-cd-react) |
 |-|-|
 
 ## Pilha de tecnologia
